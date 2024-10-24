@@ -1,6 +1,7 @@
 project "GLFW"
     kind "StaticLib"
     language "C"
+    staticruntime "on"
 
     targetdir   ("bin/" .. outputdir .. "/%{prj.name}")
     objdir      ("int/" .. outputdir .. "/%{prj.name}")
@@ -58,10 +59,10 @@ project "GLFW"
     }
 
     filter { "system:windows", "configurations:Debug" }
-        buildoptions "/MTd"
+        runtime "Debug"
 
     filter { "system:windows", "configurations:Release" }
-        buildoptions "/MT"
+        runtime "Release"
 
     filter { "system:windows", "configurations:Dist" }
-        buildoptions "/MT"
+        runtime "Release"
